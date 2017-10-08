@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package segurosservir;
+package segurosservir.seguros;
 
-/**
- *
- * @author Felipe
- */
-public interface SeguroVida {
+
+public class Planes implements SeguroVida {
     
 }
