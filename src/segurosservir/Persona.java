@@ -17,6 +17,11 @@ public abstract class Persona {
     String apellido;
     int edad;
     Date fechaNacimiento;
+
+    public Persona() {
+    }
+    
+    
     
     
 }
