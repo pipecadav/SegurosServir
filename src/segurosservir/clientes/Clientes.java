@@ -25,6 +25,7 @@ public class Clientes {
 
     public Clientes() {
     }
+    //caclcular edad metodo 1
     public void calcularEdad(){
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaNac = LocalDate.parse("15/08/1993", fmt);
@@ -34,12 +35,12 @@ public class Clientes {
         System.out.printf("Tu edad es: %s años, %s meses y %s días",
         periodo.getYears(), periodo.getMonths(), periodo.getDays());
     }
+    //edad metodo 2
     public int edad(String fecha_nac) {     //fecha_nac debe tener el formato dd/MM/yyyy
-   
     Date fechaActual = new Date();
-    SegurosServir formato = new SegurosServir("dd/MM/yyyy");
+    SegurosServir formato = new SegurosServir("dd/MM/yyyy");//para que nos de la edad debe estar en este formato
     String hoy = formato.format(fechaActual);
-    String[] dat1 = fecha_nac.split("/");
+    String[] dat1 = fecha_nac.split("/"); 
     String[] dat2 = hoy.split("/");
     int anos = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
     int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
