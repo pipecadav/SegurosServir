@@ -7,8 +7,16 @@ package segurosservir.seguros;
 
 /**
  *
- * @author Felipe
+ * @author Felipe Cadavid y Jeison Velasquez
  */
 public interface SeguroVida {
+    
+    public void crear();
+    
+    public void calculaCosto();
+    
+    public void calcularEsperanzadeVida();
+    
+    
     
 }

@@ -5,6 +5,10 @@
  */
 package segurosservir;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+import tablasdereferencia.*;
 /**
  *
  * @author Felipe
@@ -16,6 +20,12 @@ public class SegurosServir {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+       // TablasDeReferencia.inicializarTabla();
+        System.out.println(Date.from(Instant.now()));
+       SimpleDateFormat formatter = new SimpleDateFormat("dd.mm.yy");
+      
+
     }
     
 }

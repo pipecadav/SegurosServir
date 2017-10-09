@@ -1,26 +1,31 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que contiene las funciones de la clase persona
  */
 package segurosservir.clientes;
 
+import java.time.Instant;
 import java.util.Date;
 
 /**
- *
- * @author Felipe
+ * Clase Persona
+ * @author Felipe Cadavid y Jeison Velasquez
+ * @since 08-10-2017
  */
-public abstract class Persona {
+public class Clientes {
     
     private String nombre;
     private String apellido;
     private int edad;
     private Date fechaNacimiento;
+    private String documento;
 
-    public Persona() {
+    public Clientes() {
     }
-
+    
+    public void calcularEdad(Date fechaNacimiento){
+        Date.from(Instant.now());
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -51,6 +56,14 @@ public abstract class Persona {
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
     
     
