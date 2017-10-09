@@ -27,5 +27,13 @@ public class SegurosServir {
       
 
     }
+
+    public SegurosServir(String ddMMyyyy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String format(Date fechaActual) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
