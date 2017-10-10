@@ -11,11 +11,13 @@ package segurosservir.seguros;
  */
 public interface SeguroVida {
     
-    public void crear();
+    public boolean validarViabilidad();
     
-    public void calculaCosto();
+    public double calculaCostoPrima(double montoAsegurar, int tiempoSeguro);
     
-    public void calcularEsperanzadeVida();
+    public double calcularMensual(double prima);
+    
+    
     
     
     
