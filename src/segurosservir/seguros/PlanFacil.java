@@ -9,8 +9,9 @@ import segurosservir.clientes.Clientes;
 import tablasdereferencia.*;
 
 /**
- * 
+ * Clase Plan Facil
  * @author Felipe Cadavid y Jeison Velasquez
+ * @since 08-10-2017
  */
 public class PlanFacil implements SeguroVida{
     

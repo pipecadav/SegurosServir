@@ -8,7 +8,11 @@ package segurosservir.seguros;
 import segurosservir.clientes.Clientes;
 import tablasdereferencia.*;
 
-
+/**
+ * Clase Plan Tranquilo
+ * @author Felipe Cadavid y Jeison Velasquez
+ * @since 08-10-2017
+ */
 public class PlanTranquilo implements SeguroVida {
 
     Clientes persona;
