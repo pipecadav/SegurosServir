@@ -11,4 +11,50 @@ package segurosservir.clientes;
  */
 public class Poliza {
     
+    private double prima;
+    private int documento;
+    private double cuotaMensual;
+    private double montoAsegurado;
+
+    public Poliza() {
+    }
+
+    public double getPrima() {
+        return prima;
+    }
+
+    public void setPrima(double prima) {
+        this.prima = prima;
+    }
+
+    public int getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(int documento) {
+        this.documento = documento;
+    }
+
+    public double getCuotaMensual() {
+        return cuotaMensual;
+    }
+
+    public void setCuotaMensual(double cuotaMensual) {
+        this.cuotaMensual = cuotaMensual;
+    }
+
+    public double getMontoAsegurado() {
+        return montoAsegurado;
+    }
+
+    public void setMontoAsegurado(double montoAsegurado) {
+        this.montoAsegurado = montoAsegurado;
+    }
+
+    @Override
+    public String toString(){
+        return "Cliente con cedula:" + this.documento + " , debe pagar una prima de: $\n"
+                + this.cuotaMensual +" y tiene un monto asegurado de: "+ this.montoAsegurado +"\n"
+                + "para una prima total de: "+ this.prima;
+    }
 }

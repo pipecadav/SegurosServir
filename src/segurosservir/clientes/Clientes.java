@@ -3,11 +3,16 @@
  */
 package segurosservir.clientes;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import javax.swing.*;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import segurosservir.*;
 
 /**
@@ -18,42 +23,53 @@ import segurosservir.*;
 public class Clientes {
     
     private String nombre;
-    private String apellido;
     private int edad;
-    private Date fechaNacimiento;
-    private String documento;
+    private LocalDate fechaNacimiento;
+    private int documento;
+    private long expectativaDias;
+    private long diasvividos;
+    static final int EXPECTATIVAVIDA = 78;
 
-    public Clientes() {
+    /**
+     * Constructor 
+     */
+    public Clientes(){
     }
-    //caclcular edad metodo 1
-    public void calcularEdad(){
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaNac = LocalDate.parse("15/08/1993", fmt);
-        LocalDate ahora = LocalDate.now();
-        
-        Period periodo = Period.between(fechaNac, ahora);
-        System.out.printf("Tu edad es: %s años, %s meses y %s días",
-        periodo.getYears(), periodo.getMonths(), periodo.getDays());
-    }
-    //edad metodo 2
-    public int edad(String fecha_nac) {     //fecha_nac debe tener el formato dd/MM/yyyy
-        Date fechaActual = new Date();
-        SegurosServir formato = new SegurosServir("dd/MM/yyyy");//para que nos de la edad debe estar en este formato
-        String hoy = formato.format(fechaActual);
-        String[] dat1 = fecha_nac.split("/"); 
-        String[] dat2 = hoy.split("/");
-        int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
-        int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
-        if (mes < 0) {
-          años = años - 1;
-        } else if (mes == 0) {
-          int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
-          if (dia > 0) {
-            años = años - 1;
-          }
+           
+    /**
+     * Método que almacena la fecha de nacimiento una vez ingresada por el cliente
+     * @param entradaFecha - Recibe un parámetro cadena con la fecha
+     */
+    public void setFechaNacimiento(String entradaFecha) {
+        try{
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechaNacimiento = LocalDate.parse(entradaFecha, fmt);
+            this.fechaNacimiento = fechaNacimiento;
+        }catch(DateTimeParseException e){
+            JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE); 
         }
-        return años;
-  }
+    }
+    
+    public void calcularEdad(){
+        Period periodo = Period.between(fechaNacimiento, LocalDate.now());
+        this.edad = periodo.getYears();
+    }
+    
+    public void calcularDiasVividos(){
+        this.diasvividos = ChronoUnit.DAYS.between(fechaNacimiento, LocalDate.now());
+    }
+    
+    public void calcularExpectativa(){
+        // Pendiente Terminar calculo de la expectativa
+        this.expectativaDias = ChronoUnit.DAYS.between(LocalDate.now(),LocalDate.now() );
+    }
+        
+    @Override
+    public String toString(){
+      return "Nombre: "+ this.nombre +"\n"
+              + "Edad: "+ this.edad +"\n"
+              + "Segun expectativa de vida tiene: "+ this.expectativaDias +" días restantes";
+    }
     
     public String getNombre() {
         return nombre;
@@ -61,14 +77,6 @@ public class Clientes {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public int getEdad() {
@@ -79,23 +87,33 @@ public class Clientes {
         this.edad = edad;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getDocumento() {
+    public int getDocumento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public void setDocumento(int documento) {
         this.documento = documento;
     }
     
-    
+    public long getDiasRestantes() {
+        return expectativaDias;
+    }
+
+    public void setDiasRestantes(long diasRestantes) {
+        this.expectativaDias = diasRestantes;
+    }
+
+    public long getDiavividos() {
+        return diasvividos;
+    }
+
+    public void setDiavividos(long díavividos) {
+        this.diasvividos = díavividos;
+    }
     
     
 }
