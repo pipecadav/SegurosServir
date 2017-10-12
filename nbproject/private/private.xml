@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
-=======
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/test/sandbox/SandBox.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/clientes/Clientes.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/clientes/Poliza.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/SegurosServir.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/seguros/PlanFacil.java</file>
+        </group>
     </open-files>
->>>>>>> 8fccac386ae2920d3913dbffb37f28cb9ebc7457
 </project-private>
