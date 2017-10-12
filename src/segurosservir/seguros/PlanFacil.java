@@ -15,18 +15,18 @@ import tablasdereferencia.*;
  */
 public class PlanFacil implements SeguroVida{
     
-    Clientes persona;
     double prima;
     static final int EXPECTATIVAVIDA = 78;
     
     /**
      * Valida los requisitos del asegurado, debe ser mayor o igual a 22 años
      * Debe ser como mínimo 10 años menor que la expectativa de vida
+     * @param edad Recibe la edad del cliente como parámetro
      * @return Devuelve verdadero o falso
      */
     @Override
-    public boolean validarViabilidad() {
-           return (((EXPECTATIVAVIDA - persona.getEdad()) <10) && (persona.getEdad() >= 22));
+    public boolean validarViabilidad(int edad) {
+           return (((EXPECTATIVAVIDA - edad) <10) && (edad >= 22));
        }
   
 
@@ -34,15 +34,16 @@ public class PlanFacil implements SeguroVida{
      * Ejecuta la función Ax = Monto*(Dxn/Dx)
      * @param montoAsegurar Cantidad a asegurar
      * @param tiempoSeguro Tiempo futuro
+     * @param Recibe la edad del cliente como parámetro
      * @return Retorna el valor de la prima
      */
     @Override
-    public double calculaCostoPrima(double montoAsegurar, int tiempoSeguro) {
+    public double calculaCostoPrima(double montoAsegurar, int tiempoSeguro, int edad) {
         double dxn = 0.0;
         double dxny = 0.0;
         TablasDeReferencia.inicializarTabla();
         for(int i = 0; i < TablasDeReferencia.valores.size(); i++){
-            if(persona.getEdad() == TablasDeReferencia.valores.get(i).getEdad()){
+            if(edad == TablasDeReferencia.valores.get(i).getEdad()){
                 dxn = TablasDeReferencia.valores.get(i).getDx();
                 dxny = TablasDeReferencia.valores.get(i+tiempoSeguro).getDx();
                 i = TablasDeReferencia.valores.size();

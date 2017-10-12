@@ -16,7 +16,7 @@ public interface SeguroVida {
      * Todo seguro de vida debe validar una viabilidad
      * @return - devuelve true si es viable, o false si no lo es
      */
-    public boolean validarViabilidad();
+    public boolean validarViabilidad(int edad);
     
     /**
      * Todo plan debe llevar un monto a asegurar
@@ -26,7 +26,7 @@ public interface SeguroVida {
      * @param tiempoSeguro El plazo de tiempo de seguro entra como parametro
      * @return - devuelve el valor de neto de la prima
      */
-    public double calculaCostoPrima(double montoAsegurar, int tiempoSeguro);
+    public double calculaCostoPrima(double montoAsegurar, int tiempoSeguro, int edad);
     
     /**
      * Todo plan debe tener la posibilidad de calcular su tarifa mensual

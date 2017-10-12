@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import segurosservir.clientes.Clientes;
 
 /**
  *
@@ -40,30 +41,8 @@ public class SandBox {
      
      public static void main(String[] args) {
         
-        int edad = 0;
-        int dias = 0;
-        long ttldays = 0;
-        String fechaNmto = "15/03/1988";
-        LocalDate fechaNac = null;
-        try{
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        fechaNac = LocalDate.parse(fechaNmto, fmt);
+        Clientes persona = new Clientes();
         
-        Period periodo = Period.between(fechaNac, LocalDate.now());
-        edad = periodo.getYears();
-        dias = periodo.getDays();
-        
-        ttldays = ChronoUnit.DAYS.between(fechaNac, LocalDate.now());
-        
-        System.out.println(edad);
-        System.out.println(dias);
-         System.out.println(ttldays); 
-        }catch(DateTimeParseException e){
-            
-            System.out.println("El Formato de entrada no es válido");
-            
-            
-        }
         
         
         

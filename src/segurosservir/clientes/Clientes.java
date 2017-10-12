@@ -43,8 +43,8 @@ public class Clientes {
     public void setFechaNacimiento(String entradaFecha) {
         try{
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate fechaNacimiento = LocalDate.parse(entradaFecha, fmt);
-            this.fechaNacimiento = fechaNacimiento;
+            LocalDate fNacimiento = LocalDate.parse(entradaFecha, fmt);
+            this.fechaNacimiento = fNacimiento;
         }catch(DateTimeParseException e){
             JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE); 
         }
@@ -60,8 +60,7 @@ public class Clientes {
     }
     
     public void calcularExpectativa(){
-        // Pendiente Terminar calculo de la expectativa
-        this.expectativaDias = ChronoUnit.DAYS.between(LocalDate.now(),LocalDate.now() );
+        this.expectativaDias = ChronoUnit.DAYS.between(LocalDate.now(),fechaNacimiento.plusYears(EXPECTATIVAVIDA));
     }
         
     @Override
