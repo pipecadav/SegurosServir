@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 import segurosservir.clientes.Clientes;
 
 /**
@@ -40,11 +42,7 @@ public class SandBox {
   }
      
      public static void main(String[] args) {
-        
-        Clientes persona = new Clientes();
-        
-        
-        
+
         
     }
              

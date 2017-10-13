@@ -48,6 +48,7 @@ public class Clientes {
         }catch(DateTimeParseException e){
             JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE); 
         }
+        
     }
     
     public void calcularEdad(){
@@ -67,7 +68,8 @@ public class Clientes {
     public String toString(){
       return "Nombre: "+ this.nombre +"\n"
               + "Edad: "+ this.edad +"\n"
-              + "Segun expectativa de vida tiene: "+ this.expectativaDias +" días restantes";
+              + "Segun expectativa de vida tiene: "+ this.expectativaDias +" días restantes"+"\n"
+              + "Has vivido ";
     }
     
     public String getNombre() {
