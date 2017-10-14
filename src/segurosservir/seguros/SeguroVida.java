@@ -14,6 +14,7 @@ public interface SeguroVida {
     
     /**
      * Todo seguro de vida debe validar una viabilidad
+     * @param edad La edad del asegurado
      * @return - devuelve true si es viable, o false si no lo es
      */
     public boolean validarViabilidad(int edad);
@@ -24,6 +25,7 @@ public interface SeguroVida {
      * Y todos deben calcular el costo de la prima
      * @param montoAsegurar La cantidad a asegurar entra como parámetro
      * @param tiempoSeguro El plazo de tiempo de seguro entra como parametro
+     * @param edad La edad del asegurado
      * @return - devuelve el valor de neto de la prima
      */
     public double calculaCostoPrima(double montoAsegurar, int tiempoSeguro, int edad);

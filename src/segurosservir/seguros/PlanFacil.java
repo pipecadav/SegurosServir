@@ -5,7 +5,6 @@
  */
 package segurosservir.seguros;
 
-import segurosservir.clientes.Clientes;
 import tablasdereferencia.*;
 
 /**
@@ -15,7 +14,7 @@ import tablasdereferencia.*;
  */
 public class PlanFacil implements SeguroVida{
     
-    double prima;
+    private double prima;
     static final int EXPECTATIVAVIDA = 78;
     
     /**
@@ -34,7 +33,7 @@ public class PlanFacil implements SeguroVida{
      * Ejecuta la función Ax = Monto*(Dxn/Dx)
      * @param montoAsegurar Cantidad a asegurar
      * @param tiempoSeguro Tiempo futuro
-     * @param Recibe la edad del cliente como parámetro
+     * @param edad Recibe la edad del cliente como parámetro
      * @return Retorna el valor de la prima
      */
     @Override
@@ -62,5 +61,14 @@ public class PlanFacil implements SeguroVida{
     public double calcularMensual(double prima) {
         return (prima/60);
     }
+
+    public double getPrima() {
+        return prima;
+    }
+
+    public void setPrima(double prima) {
+        this.prima = prima;
+    }
+    
     
 }

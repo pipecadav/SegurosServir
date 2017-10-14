@@ -5,7 +5,6 @@
  */
 package segurosservir.seguros;
 
-import segurosservir.clientes.Clientes;
 import tablasdereferencia.*;
 
 /**
@@ -15,9 +14,9 @@ import tablasdereferencia.*;
  */
 public class PlanTranquilo implements SeguroVida {
 
-    double prima;
+    private double prima;
     static final int EXPECTATIVAVIDA = 78;
-    int tiempoSeguro;
+    private int tiempoSeguro;
     
     /**
      * Valida los requisitos del asegurado, debe ser mayor o igual a 22 años
@@ -67,5 +66,21 @@ public class PlanTranquilo implements SeguroVida {
         return (prima/(tiempoSeguro*12));
     }
 
+    public double getPrima() {
+        return prima;
+    }
 
+    public void setPrima(double prima) {
+        this.prima = prima;
+    }
+
+    public int getTiempoSeguro() {
+        return tiempoSeguro;
+    }
+
+    public void setTiempoSeguro(int tiempoSeguro) {
+        this.tiempoSeguro = tiempoSeguro;
+    }
+
+    
 }

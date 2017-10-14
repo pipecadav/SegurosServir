@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/test/sandbox/SandBox.java</file>
-            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/clientes/Clientes.java</file>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/clientes/Poliza.java</file>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/SegurosServir.java</file>
-            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/segurosservir/seguros/PlanFacil.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/tablasdereferencia/DatosOperaciones.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/SegurosServir/src/tablasdereferencia/TablasDeReferencia.java</file>
         </group>
     </open-files>
 </project-private>

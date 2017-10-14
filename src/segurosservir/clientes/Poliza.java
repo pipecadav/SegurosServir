@@ -15,10 +15,17 @@ public class Poliza {
     private int documento;
     private double cuotaMensual;
     private double montoAsegurado;
+    private int tiempoAsegurado;
 
     public Poliza() {
     }
 
+    @Override
+    public String toString(){
+        return "Cliente con cedula:" + this.documento + " , debe pagar una prima de: $\n"
+                + this.cuotaMensual +" y tiene un monto asegurado de: "+ this.montoAsegurado +"\n"
+                + "para una prima total de: "+ this.prima + " a un tiempo de: " + this.tiempoAsegurado;
+    }
     public double getPrima() {
         return prima;
     }
@@ -51,10 +58,11 @@ public class Poliza {
         this.montoAsegurado = montoAsegurado;
     }
 
-    @Override
-    public String toString(){
-        return "Cliente con cedula:" + this.documento + " , debe pagar una prima de: $\n"
-                + this.cuotaMensual +" y tiene un monto asegurado de: "+ this.montoAsegurado +"\n"
-                + "para una prima total de: "+ this.prima;
+    public int getTiempoAsegurado() {
+        return tiempoAsegurado;
+    }
+
+    public void setTiempoAsegurado(int tiempoAsegurado) {
+        this.tiempoAsegurado = tiempoAsegurado;
     }
 }

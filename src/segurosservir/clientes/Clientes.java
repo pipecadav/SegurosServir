@@ -40,7 +40,7 @@ public class Clientes {
      * Método que almacena la fecha de nacimiento una vez ingresada por el cliente
      * @param entradaFecha - Recibe un parámetro cadena con la fecha
      */
-    public void setFechaNacimiento(String entradaFecha) {
+    public void setFechaNacimiento(String entradaFecha) throws DateTimeParseException {
         try{
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate fNacimiento = LocalDate.parse(entradaFecha, fmt);
@@ -48,7 +48,6 @@ public class Clientes {
         }catch(DateTimeParseException e){
             JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE); 
         }
-        
     }
     
     public void calcularEdad(){
