@@ -20,6 +20,7 @@ import segurosservir.*;
  * @author Felipe Cadavid y Jeison Velasquez
  * @since 08-10-2017
  */
+
 public class Clientes {
     
     private String nombre;
@@ -46,7 +47,11 @@ public class Clientes {
             LocalDate fNacimiento = LocalDate.parse(entradaFecha, fmt);
             this.fechaNacimiento = fNacimiento;
         }catch(DateTimeParseException e){
-            JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE);
+            setFechaNacimiento(JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento"));
+            
+        }catch(NumberFormatException ex){
+            
         }
     }
     
@@ -65,10 +70,10 @@ public class Clientes {
         
     @Override
     public String toString(){
-      return "Nombre: "+ this.nombre +"\n"
-              + "Edad: "+ this.edad +"\n"
-              + "Segun expectativa de vida tiene: "+ this.expectativaDias +" días restantes"+"\n"
-              + "Has vivido ";
+      return "Nombre: "+ this.nombre +".\n"
+              + "Edad: "+ this.edad + ". Fecha de nacimiento:"+ this.fechaNacimiento +".\n"
+              + "Segun expectativa de vida tiene: "+ this.expectativaDias +" días restantes.\n"
+              + "Ha vivido " + this.diasvividos +" dias. \n";
     }
     
     public String getNombre() {
@@ -95,7 +100,7 @@ public class Clientes {
         return documento;
     }
 
-    public void setDocumento(int documento) {
+    public void setDocumento(int documento){
         this.documento = documento;
     }
     

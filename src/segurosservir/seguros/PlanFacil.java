@@ -25,7 +25,7 @@ public class PlanFacil implements SeguroVida{
      */
     @Override
     public boolean validarViabilidad(int edad) {
-           return (((EXPECTATIVAVIDA - edad) <10) && (edad >= 22));
+           return (((EXPECTATIVAVIDA - edad) >10) && (edad >= 22));
        }
   
 

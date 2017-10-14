@@ -22,9 +22,9 @@ public class Poliza {
 
     @Override
     public String toString(){
-        return "Cliente con cedula:" + this.documento + " , debe pagar una prima de: $\n"
-                + this.cuotaMensual +" y tiene un monto asegurado de: "+ this.montoAsegurado +"\n"
-                + "para una prima total de: "+ this.prima + " a un tiempo de: " + this.tiempoAsegurado;
+        return " Tiene un poliza con cedula: " + this.documento + ".\n"
+               + "Debe pagar un cuota mensual de: $" + this.cuotaMensual +" y tiene un monto asegurado de: "+ this.montoAsegurado +"\n"
+               + "Prima neta total: $"+ this.prima + ". Tiempo total: " + this.tiempoAsegurado + " años";
     }
     public double getPrima() {
         return prima;

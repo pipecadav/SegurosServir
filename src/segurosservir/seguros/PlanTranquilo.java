@@ -26,7 +26,7 @@ public class PlanTranquilo implements SeguroVida {
      */
     @Override
     public boolean validarViabilidad(int edad) {
-           return (((EXPECTATIVAVIDA - edad) <(tiempoSeguro+1)) && (edad >= 22));
+           return (((EXPECTATIVAVIDA - edad) >(tiempoSeguro+1)) && (edad >= 22));
     }
 
     /**
