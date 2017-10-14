@@ -20,9 +20,13 @@ public class Poliza {
     public Poliza() {
     }
 
+    /**
+     * Devuelve los datos de este objeto como una cadena
+     * @return Retorna una cadena
+     */
     @Override
     public String toString(){
-        return " Tiene un poliza con cedula: " + this.documento + ".\n"
+        return "Tiene un poliza con cedula: " + this.documento + ".\n"
                + "Debe pagar un cuota mensual de: $" + this.cuotaMensual +" y tiene un monto asegurado de: "+ this.montoAsegurado +"\n"
                + "Prima neta total: $"+ this.prima + ". Tiempo total: " + this.tiempoAsegurado + " años";
     }

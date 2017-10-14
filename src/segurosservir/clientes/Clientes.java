@@ -49,29 +49,38 @@ public class Clientes {
         }catch(DateTimeParseException e){
             JOptionPane.showMessageDialog(null, "Formato de entrada inválido", "Uh-Oh!", ERROR_MESSAGE);
             setFechaNacimiento(JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento"));
-            
-        }catch(NumberFormatException ex){
-            
         }
     }
-    
+    /**
+     * Calcula la edad de la persona basado en la fecha de nacimiento
+     */
     public void calcularEdad(){
         Period periodo = Period.between(fechaNacimiento, LocalDate.now());
         this.edad = periodo.getYears();
     }
     
+    /**
+     * Calcula la cantidad de dias vividos por la persona dada la fecha de nacimiento
+     */
     public void calcularDiasVividos(){
         this.diasvividos = ChronoUnit.DAYS.between(fechaNacimiento, LocalDate.now());
     }
     
+    /**
+     * Calcula la expectativa de vida dada la expectativa de vida promedio
+     */
     public void calcularExpectativa(){
         this.expectativaDias = ChronoUnit.DAYS.between(LocalDate.now(),fechaNacimiento.plusYears(EXPECTATIVAVIDA));
     }
-        
+     
+    /**
+     * Devuelve los datos de este objeto como una cadena
+     * @return Retorna una cadena 
+     */
     @Override
     public String toString(){
       return "Nombre: "+ this.nombre +".\n"
-              + "Edad: "+ this.edad + ". Fecha de nacimiento:"+ this.fechaNacimiento +".\n"
+              + "Edad: "+ this.edad + ". Fecha de nacimiento: "+ this.fechaNacimiento +".\n"
               + "Segun expectativa de vida tiene: "+ this.expectativaDias +" días restantes.\n"
               + "Ha vivido " + this.diasvividos +" dias. \n";
     }
@@ -100,8 +109,8 @@ public class Clientes {
         return documento;
     }
 
-    public void setDocumento(int documento){
-        this.documento = documento;
+    public void setDocumento() throws NumberFormatException {
+            this.documento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Documento"));
     }
     
     public long getDiasRestantes() {

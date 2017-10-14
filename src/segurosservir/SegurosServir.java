@@ -5,6 +5,7 @@
  */
 package segurosservir;
 
+import java.awt.HeadlessException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
@@ -23,45 +24,60 @@ public class SegurosServir {
     public static ArrayList <Clientes> asegurados = new ArrayList<>();
     public static ArrayList <Poliza> planes = new ArrayList<>();
     
+    /**
+     * Almacena a un cliete nuevo y la poliza que haya escogido
+     */
     public static void almacenarCliente(){
-        String tipoPoliza;
-        Clientes cliente = new Clientes();
-        Poliza seguro = new Poliza();
-        cliente.setNombre(JOptionPane.showInputDialog("Ingrese Nombre"));
-        cliente.setDocumento(Integer.parseInt(JOptionPane.showInputDialog("Ingrese Documento")));
-        seguro.setDocumento(cliente.getDocumento());
-        cliente.setFechaNacimiento(JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento")) ;
-        cliente.calcularEdad();
-        cliente.calcularDiasVividos();
-        cliente.calcularExpectativa();
-        asegurados.add(cliente);
-        seguro.setMontoAsegurado(Double.parseDouble(JOptionPane.showInputDialog("Ingrese Monto a Asegurar")));
-        seguro.setTiempoAsegurado(Integer.parseInt(JOptionPane.showInputDialog("A cuantos años desea el seguro?")));
-        String[] opciones = new String[] {"Plan Facil", "Plan Tranquilo"};
-        tipoPoliza = (String) JOptionPane.showInputDialog(null, "Escoja el tipo de poliza", "Seleccion Poliza", JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
-        switch(tipoPoliza){
-            case "Plan Facil":
-                PlanFacil facil = new PlanFacil();
-                if(facil.validarViabilidad(cliente.getEdad()) == true){
-                    seguro.setPrima(facil.calculaCostoPrima(seguro.getMontoAsegurado(), seguro.getTiempoAsegurado(), cliente.getEdad()));
-                    seguro.setCuotaMensual(facil.calcularMensual(facil.getPrima()));
-                    planes.add(seguro);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Lo sentimos, no aplica para esta póliza");
-                    asegurados.remove(cliente);
-                }
-            case "Plan Tranquilo":
-                PlanTranquilo tranquilo = new PlanTranquilo();
-                tranquilo.setTiempoSeguro(seguro.getTiempoAsegurado());
-                if(tranquilo.validarViabilidad(cliente.getEdad()) == true){
-                    seguro.setPrima(tranquilo.calculaCostoPrima(seguro.getMontoAsegurado(), seguro.getTiempoAsegurado(), cliente.getEdad()));
-                    seguro.setCuotaMensual(tranquilo.calcularMensual(tranquilo.getPrima()));
-                    planes.add(seguro);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Lo sentimos, no aplica para esta póliza");
-                    asegurados.remove(cliente);
-                }
-        }
+        try {
+            String tipoPoliza;
+            Clientes cliente = new Clientes();
+            Poliza seguro = new Poliza();
+            cliente.setNombre(JOptionPane.showInputDialog("Ingrese Nombre"));
+            cliente.setDocumento();
+            seguro.setDocumento(cliente.getDocumento());
+            cliente.setFechaNacimiento(JOptionPane.showInputDialog("Ingrese Fecha de Nacimiento")) ;
+            cliente.calcularEdad();
+            cliente.calcularDiasVividos();
+            cliente.calcularExpectativa();
+            asegurados.add(cliente);
+            seguro.setMontoAsegurado(Double.parseDouble(JOptionPane.showInputDialog("Ingrese Monto a Asegurar")));
+            seguro.setTiempoAsegurado(Integer.parseInt(JOptionPane.showInputDialog("A cuantos años desea el seguro?")));
+            String[] opciones = new String[] {"Plan Facil", "Plan Tranquilo"};
+            tipoPoliza = (String) JOptionPane.showInputDialog(null, "Escoja el tipo de poliza", "Seleccion Poliza", JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+            switch(tipoPoliza){
+                case "Plan Facil":
+                    PlanFacil facil = new PlanFacil();
+                    if(facil.validarViabilidad(cliente.getEdad()) == true){
+                        seguro.setPrima(facil.calculaCostoPrima(seguro.getMontoAsegurado(), seguro.getTiempoAsegurado(), cliente.getEdad()));
+                        seguro.setCuotaMensual(facil.calcularMensual(facil.getPrima()));
+                        planes.add(seguro);
+                        JOptionPane.showMessageDialog(null, "Cliente Almacenado! \n" 
+                                + cliente.toString() + seguro.toString());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Lo sentimos, no aplica para esta póliza");
+                        asegurados.remove(cliente);
+                    }
+                    break;
+                case "Plan Tranquilo":
+                    PlanTranquilo tranquilo = new PlanTranquilo();
+                    tranquilo.setTiempoSeguro(seguro.getTiempoAsegurado());
+                    if(tranquilo.validarViabilidad(cliente.getEdad()) == true){
+                        seguro.setPrima(tranquilo.calculaCostoPrima(seguro.getMontoAsegurado(), seguro.getTiempoAsegurado(), cliente.getEdad()));
+                        seguro.setCuotaMensual(tranquilo.calcularMensual(tranquilo.getPrima()));
+                        planes.add(seguro);
+                        JOptionPane.showMessageDialog(null, "Cliente Almacenado! \n" 
+                                + cliente.toString() + seguro.toString());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Lo sentimos, no aplica para esta póliza");
+                        asegurados.remove(cliente);
+                    }
+                    break;
+            }
+        }catch(HeadlessException | NumberFormatException | DateTimeParseException e){
+            inicializarMenu();
+            System.exit(0);
+        }    
+            
     }
     
     /**
@@ -89,7 +105,7 @@ public class SegurosServir {
         for(Poliza cancelarPoliza: planes){
             if(cancelarPoliza.getDocumento() == documento){
                 planes.remove(cancelarPoliza);
-                return "Cliente Eliminado";
+                return "Poliza Eliminada";
             }
         }
         return "Cliente no encontrado";
@@ -139,8 +155,8 @@ public class SegurosServir {
                         almacenarCliente();
                     break;
                 case 1://Cancelar poliza 
-                        documento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el documento de la persona a buscar"));
-                        
+                        documento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el documento de la persona a cancelar"));
+                        JOptionPane.showMessageDialog(null, cancelarCliente(documento) + ". " + cancelarPoliza(documento));
                     break;
 
                 case 2://Buscar cliente
